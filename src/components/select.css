@@ -1,0 +1,259 @@
+.select {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  position: relative;
+}
+.select ul, .select ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul.select-dropdown-menu, ol.select-dropdown-menu {
+  margin-top: 4px;
+}
+.select > ul > li > a {
+  padding: 0;
+  background-color: var(--background-color);
+}
+.select-selection {
+  outline: none;
+  user-select: none;
+  box-sizing: border-box;
+  display: block;
+  background-color: var(--background-color);
+  border-radius: 4px;
+  border: 1px solid var(--grey-2-color);
+  border-top-width: 1.02px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.select-selection:hover {
+  border-color: var(--accent-color);
+  border-right-width: 1px !important;
+}
+.select-focused .select-selection,
+.select-selection:focus,
+.select-selection:active {
+  border-color: var(--accent-color);
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--accent-color-opacity);
+  border-right-width: 1px !important;
+}
+.select-selection__clear {
+  display: inline-block;
+  font-style: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+  opacity: 0;
+  position: absolute;
+  right: 11px;
+  z-index: 1;
+  background: var(--background-color);
+  top: 50%;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.25);
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  line-height: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease, opacity 0.15s ease;
+}
+.select-selection__clear:hover {
+  color: rgba(0, 0, 0, 0.45);
+}
+.select-selection:hover .select-selection__clear {
+  opacity: 1;
+}
+.select-selection-selected-value {
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  padding-right: 20px;
+}
+.select-selection-selected-value {
+  padding-right: 0;
+}
+.select-disabled {
+  color: rgba(0, 0, 0, 0.25);
+}
+.select-disabled .select-selection {
+  background: var(--grey-4-color);
+  cursor: not-allowed;
+}
+.select-disabled .select-selection:hover,
+.select-disabled .select-selection:focus,
+.select-disabled .select-selection:active {
+  border-color: var(--grey-2-color);
+  box-shadow: none;
+}
+.select-disabled .select-selection__clear {
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+}
+.select-selection--single {
+  height: 32px;
+  position: relative;
+  cursor: pointer;
+}
+.select-small .select-selection--single {
+  height: 28px;
+}
+.select-selection__rendered {
+  display: block;
+  margin-left: 11px;
+  margin-right: 11px;
+  position: relative;
+  line-height: 30px; /* why is this "only" 30px? */
+  line-height: 32px;
+}
+.select-small .select-selection__rendered {
+  line-height: 28px;
+}
+.select-selection__rendered:after {
+  content: '.';
+  visibility: hidden;
+  pointer-events: none;
+  display: inline-block;
+  width: 0;
+}
+.select-disabled .select-selection__choice__remove {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: default;
+}
+.select-disabled .select-selection__choice__remove:hover {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.select-selection__placeholder {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 9px;
+  color: var(--grey-1-color);
+  line-height: 20px;
+  height: 20px;
+  max-width: 100%;
+  margin-top: -10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+.select-allow-clear .select-selection--single .select-selection-selected-value {
+  padding-right: 16px;
+}
+
+.select-open .select-selection {
+  border-color: var(--accent-color);
+  outline: 0;
+  box-shadow: 0 0 0 2px var(--accent-color-opacity);
+  border-right-width: 1px !important;
+}
+.select-dropdown {
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-sizing: border-box;
+  z-index: 1050;
+  left: -9999px;
+  top: -9999px;
+  position: absolute;
+  outline: none;
+  font-size: 14px;
+}
+.select-dropdown-hidden {
+  display: none;
+}
+.select-dropdown-menu {
+  outline: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow: auto;
+}
+.select-dropdown-menu-item-group-list {
+  margin: 0;
+  padding: 0;
+}
+.select-dropdown-menu-item-group-list > .select-dropdown-menu-item {
+  padding-left: 20px;
+}
+.select-dropdown-menu-item-group-title {
+  color: rgba(0, 0, 0, 0.45);
+  padding: 0 12px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+.select-small .select-dropdown-menu-item-group-title {
+  height: 28px;
+  line-height: 28px;
+}
+.select-dropdown-menu-item {
+  position: relative;
+  display: block;
+  padding: 5px 12px;
+  line-height: 22px;
+  font-weight: normal;
+  color: var(--text-color);
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.3s ease;
+}
+.select-dropdown-menu-item:hover {
+  background-color: var(--grey-4-color);
+}
+.select-dropdown-menu-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+.select-dropdown-menu-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+.select-dropdown-menu-item-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.select-dropdown-menu-item-disabled:hover {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: var(--background-color);
+  cursor: not-allowed;
+}
+.select-dropdown-menu-item-selected,
+.select-dropdown-menu-item-selected:hover {
+  background-color: var(--grey-4-color);
+  font-weight: 600;
+  color: var(--text-color);
+}
+.select-dropdown-menu-item-active {
+  background-color: var(--grey-4-color);
+}
+.select-dropdown-menu-item-divider {
+  height: 1px;
+  margin: 1px 0;
+  overflow: hidden;
+  background-color: var(--grey-2-color);
+  line-height: 0;
+}
+.select-dropdown-container-open .select-dropdown,
+.select-dropdown-open .select-dropdown {
+  display: block;
+}

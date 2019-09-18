@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Dashboard for auth" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="manifest" href="../static/manifest.json">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <link rel="mask-icon" href="../static/safari-pinned-tab.svg" color="#6a77d8">
+    <meta name="msapplication-TileColor" content="#6a77d8">
+    <meta name="theme-color" content="#ffffff">
+    <title>Profile | Dashboard</title>
+  </head>
+  <body class="theme-light">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+
+    </div>
+    <script>
+      /*
+        this is only for development (for now);
+        the react-app will use the previously developed
+        login page (in html/js without react) but cannot
+        use this at the moment duo to not being able to
+        correctly redirect while the proper infrastructure
+        around having a react-app inside the auth backend
+        is not fully figured out yet.
+        To get the react-app running replace the JWT and
+        RefreshToken inside the .env file with the values
+        from the "old" html/js dashboard. The values can
+        be extracted using "getStorage('jwt')" and
+        "getStorage('refreshToken')".
+      */
+      window.REACT_APP_JWT = "%REACT_APP_JWT%"
+      window.REACT_APP_REFRESH_TOKEN = "%REACT_APP_REFRESH_TOKEN%" 
+    </script>
+  </body>
+</html>
