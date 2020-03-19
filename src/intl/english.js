@@ -15,6 +15,8 @@ const english = {
   successfully_deleted: 'Successfully deleted',
   successfully_added:   'Successfully added',
   something_went_wrong: 'Something went wrong',
+  error: 'Error',
+  malformed_json: 'Malformed JSON',
   close: 'Close',
   invalidate: 'Invalidate',
   metadata: 'Metadata',

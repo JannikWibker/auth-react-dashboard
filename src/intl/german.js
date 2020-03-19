@@ -15,6 +15,8 @@ const german = {
   successfully_deleted: 'Erfolgreich gelöscht',
   successfully_added:   'Erfolgreich hinzugefügt',
   something_went_wrong: 'Etwas ist fehlgeschlagen',
+  error: 'Fehler',
+  malformed_json: 'Invalides JSON',
   close: 'Schließen',
   invalidate: 'Invalidieren',
   metadata: 'Metadaten',

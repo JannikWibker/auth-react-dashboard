@@ -6,8 +6,6 @@ import { withToast } from 'react-awesome-toasts'
 import Select, { Option } from './Select.js'
 import { Intl, intl } from './Intl.js'
 
-const mock_add_user = () => Promise.resolve({ message: 'idk', status: 'success' })
-
 class UserAdd extends Component {
 
   el = {
@@ -87,7 +85,7 @@ class UserAdd extends Component {
           <input id="user-add-last_name"  autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.last_name}  placeholder={intl('last_name')}  />
         </div>
         <div className="user-profile-field-block">
-          <input id="user-add-password"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.password}   placeholder={intl('password')}   />
+          <input id="user-add-password"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.password}   placeholder={intl('password')} type="password" />
           <Select value={this.state.account_type} style={{ width: 152, height: 32 }} onChange={this.updateAccountType}>
             <Option value="default">default</Option>
             <Option value="privileged">privileged</Option>

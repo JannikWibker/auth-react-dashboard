@@ -59,7 +59,12 @@ class UserList extends Component {
         changes.metadata = JSON.parse(this.el.metadata.current.value)
       } catch (err) {
         console.log(err)
-        this.setState({ editing_user: null }) // show some kind of error, maybe use a toast like notes
+        this.setState({ editing_user: null })
+        this.props.toast.show({
+          text: intl('error') + " - " + intl('malformed_json'),
+          actionText: intl('close'),
+          onActionClick: this.props.hide
+        })
       }
     }
 
