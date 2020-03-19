@@ -13,6 +13,7 @@ const german = {
   delete_account: 'Account löschen',
   successfully_updated: 'Erfolgreich aktualisiert',
   successfully_deleted: 'Erfolgreich gelöscht',
+  successfully_added:   'Erfolgreich hinzugefügt',
   something_went_wrong: 'Etwas ist fehlgeschlagen',
   close: 'Schließen',
   invalidate: 'Invalidieren',

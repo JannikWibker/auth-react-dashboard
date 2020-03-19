@@ -1,6 +1,6 @@
 import { observable, action, decorate } from 'mobx'
 
-import { listUsers, modifyUser, deleteUser } from '../util/util.js'
+import { listUsers, addUser, modifyUser, deleteUser } from '../util/util.js'
 
 class UserStore {
 
@@ -26,7 +26,6 @@ class UserStore {
 
   addUser = (values) => {
     return new Promise((resolve, reject) => {
-      const addUser = () => {} // create addUser()
       addUser(values, (err, user) => {
         if(err) {
           reject(err)
@@ -39,7 +38,6 @@ class UserStore {
   }
 
   modifyUser = (changes, username) => {
-    // use modifyUser
     return new Promise((resolve, reject) => {
       modifyUser(changes, username, (err, json) => {
         console.log(err, json)
@@ -60,9 +58,11 @@ class UserStore {
         if(err) {
           reject(err)
         } else {
+          console.log(json)
           const index = this.users.findIndex(user => user.id === id)
           const rtn = this.users[index]
           this.users.splice(index, 1)
+          console.log(this.users)
           resolve(rtn)
         }
       })

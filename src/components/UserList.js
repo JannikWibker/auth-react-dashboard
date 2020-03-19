@@ -30,12 +30,6 @@ class UserList extends Component {
     metadata: React.createRef(),
   }
 
-  constructor(props) {
-    super(props)
-
-    this.state.users = props.UserStore.users
- }
-
   editingChangeAccountType = (account_type) => {
     this.setState({ editing_account_type: account_type })
   }
@@ -47,24 +41,37 @@ class UserList extends Component {
 
   saveEditUser = () => {
 
-    const user = this.state.users.find(user => user.username === this.state.editing_user)
+    // const user = this.state.users.find(user => user.username === this.state.editing_user)
+
+    const user = this.props.UserStore.users.find(user => user.username === this.state.editing_user)
 
     const changes = {}
 
     if(this.el.email.current.value !== user.email) changes.email = this.el.email.current.value
     if(this.el.first_name.current.value !== user.first_name) changes.first_name = this.el.first_name.current.value
     if(this.el.last_name.current.value !== user.last_name) changes.last_name = this.el.last_name.current.value
-    if(this.el.metadata.current.value !== user.metadata) changes.metadata = this.el.metadata.current.value // also check that the JSON is correct
+
     if(this.el.password.current.value) changes.password = this.el.password.current.value
     if(this.state.editing_account_type !== user.account_type) changes.account_type = this.state.editing_account_type
 
-    modifyUser(changes, this.state.editing_user, (err, json) => {
-      console.log(err, json)
-      const users = this.state.users
-      const index = users.findIndex(user => user.username === this.state.editing_user)
-      users[index] = { ...users[index], ...changes }
-      this.setState({ editing_user: null, users: users })
-    })
+    if(this.el.metadata.current.value !== user.metadata) {
+      try {
+        changes.metadata = JSON.parse(this.el.metadata.current.value)
+      } catch (err) {
+        console.log(err)
+        this.setState({ editing_user: null }) // show some kind of error, maybe use a toast like notes
+      }
+    }
+
+    this.props.UserStore.modifyUser()
+      .then(json => {
+        console.log(json)
+        this.setState({ editing_user: null })
+      })
+      .catch(err => {
+        console.log(err)
+        this.setState({ editing_user: null })
+      })
   }
 
   cancelEditUser = () => {
@@ -74,19 +81,12 @@ class UserList extends Component {
   deleteUser = () => {
     console.log('deleting user ' + this.state.editing_user)
 
-    const index = this.state.users.findIndex(user => user.username === this.state.editing_user)
+    const index = this.props.UserStore.users.findIndex(user => user.username === this.state.editing_user)
 
-    const id = this.state.users[index].id
+    const id = this.props.UserStore.users[index].id
 
-    deleteUser(id, (err, json) => {
-      if(err) {
-        console.log(err, json)
-        this.props.toast.show({
-          text: intl('something_went_wrong'),
-          actionText: intl('close'),
-          onActionClick: this.props.toast.hide,
-        })
-      } else {
+    this.props.UserStore.deleteUser(id)
+      .then((json) => {
         console.log(json)
         this.props.toast.show({
           text: intl('successfully_deleted'),
@@ -94,17 +94,19 @@ class UserList extends Component {
           onActionClick: this.props.toast.hide,
         })
 
-        const users = this.state.users
-
-        delete users[index]
-
         this.setState({
-          users: users,
           editing_user: null,
           editing_account_type: null,
         })
-      }
-    })
+      })
+      .catch((err) => {
+        console.log(err)
+        this.props.toast.show({
+          text: intl('something_went_wrong'),
+          actionText: intl('close'),
+          onActionClick: this.props.toast.hide,
+        })
+      })
   }
 
   render() {
@@ -134,7 +136,7 @@ class UserList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.users.map(({ id, username, account_type, email, first_name, last_name, creation_date, modification_date, metadata }) => this.state.editing_user === username ? (
+            {this.props.UserStore.users.map(({ id, username, account_type, email, first_name, last_name, creation_date, modification_date, metadata }) => this.state.editing_user === username ? (
               <tr key={id} className="editing">
                 <td className="table-data"><span id="user-list-username"  className="user-list-field">{username}</span></td>
                 <td className="table-data"><span id="user-list-id"        className="user-list-field">{id}</span></td>
@@ -150,7 +152,7 @@ class UserList extends Component {
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-last_name"  ref={this.el.last_name}   className="text-input input-small user-list-input" defaultValue={last_name} /></td>
                 <td className="table-data"><span  id="user-list-creation_date"                        className="user-list-field">{creation_date}</span></td>
                 <td className="table-data"><span  id="user-list-modification_date"                    className="user-list-field">{modification_date}</span></td>
-                <td className="table-data table-input"><input autoComplete="off" id="user-list-metadata"   ref={this.el.metadata}    className="text-input input-small user-list-input" defaultValue={metadata} /></td>
+                <td className="table-data table-input"><input autoComplete="off" id="user-list-metadata"   ref={this.el.metadata}    className="text-input input-small user-list-input" defaultValue={JSON.stringify(metadata)} /></td>
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-password"   ref={this.el.password}    className="text-input input-small user-list-input" defaultValue="" placeholder={intl('new_password')} type="password" /></td>
                 <td className="table-data">
                   <div className="save-wrapper"   tooltip-top={intl('save')}    aria-label={intl('save')}   onClick={this.saveEditUser}><CheckIcon width={16} height={16} /></div>
@@ -168,7 +170,7 @@ class UserList extends Component {
                 <td className="table-data"><span className="user-list-field">{last_name}</span></td>
                 <td className="table-data"><span className="user-list-field">{creation_date}</span></td>
                 <td className="table-data"><span className="user-list-field">{modification_date}</span></td>
-                <td className="table-data"><span className="user-list-field">{metadata}</span></td>
+                <td className="table-data"><span className="user-list-field">{JSON.stringify(metadata)}</span></td>
                 <td className="table-data"><span className="user-list-field">{'********'}</span></td>
                 <td className="table-data">
                 <div className="edit-wrapper" tooltip-top={intl('edit')} aria-label={intl('edit')} onClick={() => this.editUser(username, account_type)}><EditIcon width={16} height={16} /></div>

@@ -39,23 +39,21 @@ class UserAdd extends Component {
     }
     console.log(values)
 
-    mock_add_user(values)
+    this.props.UserStore.addUser(values)
       .then(json => {
-        if(json.status === 'success') {
-          this.props.toast.show({
-            text: intl(''),
-            actionText: intl('close'),
-            onACtionClick: this.props.hide
-          })
-          // TODO: add user to user list and all that (maybe using some kind of store (mobx))
-        } else {
-          console.log(json)
-          this.props.toasts.show({
-            text: intl('something_went_wrong') + ' (add user)',
-            actionText: intl('close'),
-            onActionClick: this.props.hide
-          })
-        }
+        this.props.toast.show({
+          text: intl('successfully_added'),
+          actionText: intl('close'),
+          onActionClick: this.props.hide
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        this.props.toasts.show({
+          text: intl('something_went_wrong') + ' (add user)',
+          actionText: intl('close'),
+          onActionClick: this.props.hide
+        })
       })
   }
 

@@ -13,6 +13,7 @@ const english = {
   delete_account: 'Delete account',
   successfully_updated: 'Successfully updated',
   successfully_deleted: 'Successfully deleted',
+  successfully_added:   'Successfully added',
   something_went_wrong: 'Something went wrong',
   close: 'Close',
   invalidate: 'Invalidate',

@@ -256,6 +256,25 @@ function modifyUser(changes, username, cb) {
     })
 }
 
+function addUser(values, cb) {
+  window.fetch('/users/admin/add', {
+    method: 'POST',
+    body: JSON.stringify(values),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + getStorage('jwt')
+    }
+  })
+    .then(function(res) { return res.json() })
+    .then(function thenAddUser(json) {
+      cb(null, json.data) // user
+    })
+    .catch(function catchAddUser() {
+      cb(true, null) // this needs to become a real error instead of just 'true'
+    })
+}
+
 function deleteUser(id, cb) {
   window.fetch('/users/', {
     method: 'DELETE',
@@ -327,6 +346,7 @@ export {
   invalidateRegisterToken,
   listUsers,
   modifyUser,
+  addUser,
   deleteUser,
   modifyUserSelf
 }

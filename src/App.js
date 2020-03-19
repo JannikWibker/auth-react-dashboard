@@ -86,38 +86,42 @@ class App extends Component {
               {this.state.logged_in ? (
                 <div className="index main">
 
-                  <div className="heading-sub">Your Information</div>
+                  <div className="wrapper">
 
-                  <UserProfileWrapper />
+                    <div className="heading-sub">Your Information</div>
 
-                  {this.state.userObject.account_type === 'admin' ? (
-                    <div className="admin-panel-wrapper">
+                    <UserProfileWrapper />
 
-                    <div className="heading-sub-small">Register Tokens</div>
-                    <div className="register_token-wrapper">
+                    {this.state.userObject.account_type === 'admin' ? (
+                      <div className="admin-panel-wrapper">
 
-                      <RegisterTokenList />
+                      <div className="heading-sub-small">Register Tokens</div>
+                      <div className="register_token-wrapper">
 
-                      <RegisterTokenAdd />
-                    
+                        <RegisterTokenList />
+
+                        <RegisterTokenAdd />
+                      
+                      </div>
+            
+                      <div className="heading-sub-small">List & Modify Users</div>
+                      <div className="list_user-wrapper">
+
+                        <UserList />
+            
+                      </div>
+
+                      <div className="heading-sub-small">Add User</div>
+                      <div className="add_user-wrapper">
+
+                        <UserAdd />
+            
+                      </div>
+            
                     </div>
-          
-                    <div className="heading-sub-small">List & Modify Users</div>
-                    <div className="list_user-wrapper">
+                    ) : null}
 
-                      <UserList />
-          
-                    </div>
-
-                    <div className="heading-sub-small">Add User</div>
-                    <div className="add_user-wrapper">
-
-                      <UserAdd />
-          
-                    </div>
-          
                   </div>
-                  ) : null}
 
                   <Footer />
 
