@@ -40,6 +40,21 @@ function login(username, passwordOrRefreshToken, isRefreshToken=false, getRefres
   })
 }
 
+function logout(alternativeOrigin="") {
+  return window.fetch(alternativeOrigin + '/logout', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Device-Id': getStorage('device_id') || '',
+      'Authorization': 'Bearer ' + getStorage('jwt')
+    }
+  })
+    .then(function(res) { return res.status === 200 
+        ? (setStorage('remember_me', false), Promise.resolve(res.json()))
+        : Promise.reject(res.json())
+    })
+}
+
 function testIfJwtWorks(token, cb, alternativeOrigin='') {
   window.fetch(alternativeOrigin + '/users/test', {
     method: 'POST',
@@ -140,7 +155,7 @@ function toggleTheme(theme, doSetStorage=true) {
 
 function redirectToLogin() {
   console.log('redirected to login')
-  // return window.location.replace('/login?id=auth')
+  return window.location.replace('/login?id=auth')
 }
 
 function generateRegisterToken({ account_type, metadata, permanent, expire_at, usage_count }, cb) {
@@ -335,6 +350,7 @@ export {
   getUrlParameter,
   getServiceInfo,
   login,
+  logout,
   testIfJwtWorks,
   testIfRefreshTokenWorks,
   updateSavedUserData,

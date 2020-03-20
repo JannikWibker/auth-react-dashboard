@@ -10,6 +10,7 @@ const german = {
   edit: 'Bearbeiten',
   cancel: 'Abbrechen',
   save: 'Speichern',
+  logout: 'Ausloggen',
   delete_account: 'Account löschen',
   successfully_updated: 'Erfolgreich aktualisiert',
   successfully_deleted: 'Erfolgreich gelöscht',

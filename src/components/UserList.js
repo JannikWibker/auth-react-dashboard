@@ -41,8 +41,6 @@ class UserList extends Component {
 
   saveEditUser = () => {
 
-    // const user = this.state.users.find(user => user.username === this.state.editing_user)
-
     const user = this.props.UserStore.users.find(user => user.username === this.state.editing_user)
 
     const changes = {}

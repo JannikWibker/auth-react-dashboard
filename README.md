@@ -6,4 +6,13 @@ This is the second iteration of the auth / accounts dashboard. For non-admin use
 
 Instead of using plain javascript this frontend is now powered by react.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
+
+```sh
+git clone https://git.jannik.ml/jannik/auth-react-dashboard dashboard # or wherever this is hosted
+cd dashboard
+npm install
+npm start
+```
+
+> This project was created using [Create React App](https://github.com/facebook/create-react-app).

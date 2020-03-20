@@ -10,6 +10,7 @@ const english = {
   edit: 'Edit',
   cancel: 'Cancel',
   save: 'Save',
+  logout: 'Logout',
   delete_account: 'Delete account',
   successfully_updated: 'Successfully updated',
   successfully_deleted: 'Successfully deleted',

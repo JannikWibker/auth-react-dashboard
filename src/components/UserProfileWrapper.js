@@ -8,7 +8,7 @@ import UserProfile from './UserProfile.js'
 /* eslint-disable-next-line */
 import { getStorage, getStorageObject, setStorage, setStorageObject } from '../util/storage.js'
 /* eslint-disable-next-line */
-import { getUrlParameter, getServiceInfo, login, testIfJwtWorks, testIfRefreshTokenWorks, updateSavedUserData, updateSavedUserDataIfNeeded, toggleTheme, redirectToLogin, generateRegisterToken, listRegisterTokens, invalidateRegisterToken, listUsers, modifyUser, deleteUser, modifyUserSelf } from '../util/util.js'
+import { getUrlParameter, getServiceInfo, login, logout, testIfJwtWorks, testIfRefreshTokenWorks, updateSavedUserData, updateSavedUserDataIfNeeded, toggleTheme, redirectToLogin, generateRegisterToken, listRegisterTokens, invalidateRegisterToken, listUsers, modifyUser, deleteUser, modifyUserSelf } from '../util/util.js'
 
 class UserProfileWrapper extends Component {
 
@@ -60,6 +60,12 @@ class UserProfileWrapper extends Component {
     console.log('deleting account')
   }
 
+  onLogout = () => {
+    logout()
+      .then(() => window.location = '/')
+      .catch(json => console.log(json))
+  }
+
   render() {
 
     const userObject = JSON.parse(getStorage('user'))
@@ -76,6 +82,7 @@ class UserProfileWrapper extends Component {
         onCancel={this.onCancelEditingAccountDetails}
         onSave={this.onSaveEditingAccountDetails}
         onDelete={this.onDeleteAccount}
+        onLogout={this.onLogout}
       />
 
     </div>

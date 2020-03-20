@@ -119,6 +119,7 @@ export default class UserProfile extends Component {
               ) : (
                 <React.Fragment>
                   <button className="btn btn-normal btn-purple" onClick={this.startEditing}><Intl word="edit" /></button>
+                  <button className="btn btn-normal" onClick={this.props.onLogout}><Intl word="logout" /></button>
                 </React.Fragment>
               )}       
             </div>
