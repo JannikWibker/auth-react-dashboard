@@ -21,7 +21,6 @@ class RegisterTokenList extends Component {
     super(props)
 
     this.updateRegisterTokenState()
-
   }
 
   updateRegisterTokenState = () => {
@@ -64,7 +63,7 @@ class RegisterTokenList extends Component {
   render() {
     console.log(this.state, this.state.loading)
     return (
-      <table>
+      <table className="editable-table">
         <thead>
           <tr className="register-token-heading-row">
             <th className="table-heading"><Intl word="id" /></th>

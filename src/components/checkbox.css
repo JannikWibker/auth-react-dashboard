@@ -1,0 +1,182 @@
+@keyframes checkboxEffect {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.checkbox {
+  font-family: "Monospaced Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  vertical-align: middle;
+  top: -0.09em;
+}
+.checkbox-wrapper:hover .checkbox-inner,
+.checkbox:hover .checkbox-inner,
+.checkbox-input:focus + .checkbox-inner {
+  border-color: var(--accent-color-light);
+}
+.checkbox-checked:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  border: 1px solid var(--accent-color-light);
+  content: '';
+  animation: checkboxEffect 0.36s ease-in-out;
+  animation-fill-mode: both;
+  visibility: hidden;
+}
+.checkbox:hover:after,
+.checkbox-wrapper:hover .checkbox:after {
+  visibility: visible;
+}
+.checkbox-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--grey-1-color);
+  border-radius: 2px;
+  background-color: var(--background-color);
+  transition: all .3s;
+}
+.checkbox-inner:after {
+  transform: rotate(45deg) scale(0);
+  position: absolute;
+  left: 4.57142857px;
+  top: 1.14285714px;
+  display: table;
+  width: 5.71428571px;
+  height: 9.14285714px;
+  border: 2px solid var(--background-color);
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+}
+.checkbox-input {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.checkbox-indeterminate .checkbox-inner:after {
+  content: ' ';
+  transform: scale(1);
+  position: absolute;
+  left: 2.42857143px;
+  top: 5.92857143px;
+  width: 9.14285714px;
+  height: 1.14285714px;
+}
+.checkbox-indeterminate.checkbox-disabled .checkbox-inner:after {
+  border-color: rgba(0, 0, 0, 0.25);
+  border-color: var(--grey-2-color);
+}
+.checkbox-checked .checkbox-inner:after {
+  transform: rotate(45deg) scale(1);
+  position: absolute;
+  display: table;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+.checkbox-checked .checkbox-inner,
+.checkbox-indeterminate .checkbox-inner {
+  background-color: var(--accent-color-light);
+  border-color: var(--accent-color-light);
+}
+.checkbox-disabled {
+  cursor: not-allowed;
+}
+.checkbox-disabled.checkbox-checked .checkbox-inner:after {
+  animation-name: none;
+  border-color: rgba(0, 0, 0, 0.25);
+  border-color: var(--grey-2-color);
+}
+.checkbox-disabled .checkbox-input {
+  cursor: not-allowed;
+}
+.checkbox-disabled .checkbox-inner {
+  border-color: var(--grey-2-color) !important;
+  background-color: var(--grey-5-color);
+}
+.checkbox-disabled .checkbox-inner:after {
+  animation-name: none;
+  border-color: var(--grey-5-color);
+}
+.checkbox-disabled + span {
+  color: rgba(0, 0, 0, 0.25);
+  color: var(--grey-2-color);
+  cursor: not-allowed;
+}
+.checkbox-wrapper {
+  font-family: "Monospaced Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: unset;
+  cursor: pointer;
+  display: inline-block;
+}
+.checkbox-wrapper + .checkbox-wrapper {
+  margin-left: 8px;
+}
+.checkbox-wrapper + span,
+.checkbox + span {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.checkbox-group {
+  font-family: "Monospaced Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+}
+.checkbox-group-item {
+  display: inline-block;
+  margin-right: 8px;
+}
+.checkbox-group-item:last-child {
+  margin-right: 0;
+}
+.checkbox-group-item + .checkbox-group-item {
+  margin-left: 0;
+}

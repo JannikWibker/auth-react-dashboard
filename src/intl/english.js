@@ -25,6 +25,7 @@ const english = {
   modification_date: 'Modification date',
   id: 'ID',
   register_token: 'Register Token',
+  permanent: 'permanent',
   add: 'Add',
   delete: 'Delete',
   clear: 'Clear'

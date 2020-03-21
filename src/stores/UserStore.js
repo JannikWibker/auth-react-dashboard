@@ -2,6 +2,8 @@ import { observable, action, decorate } from 'mobx'
 
 import { listUsers, addUser, modifyUser, deleteUser } from '../util/util.js'
 
+const account_types = [ 'default', 'priviliged', 'admin' ]
+
 class UserStore {
 
   users = []
@@ -81,3 +83,4 @@ decorate(UserStore, {
 
 const userStore = new UserStore()
 export default userStore
+export { account_types }

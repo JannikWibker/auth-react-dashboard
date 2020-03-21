@@ -115,7 +115,7 @@ class UserList extends Component {
     console.log(this.state)
     return (
       <form>
-        <table>
+        <table className="editable-table">
           <thead>
             <tr className="register-token-heading-row">
               <th className="table-heading"><Intl word="username" /></th>

@@ -25,6 +25,7 @@ const german = {
   modification_date: 'Veränderungsdatum',
   id: 'ID',
   register_token: 'Register Token',
+  permanent: 'Permanent',
   add: 'Hinzufügen',
   delete: 'Löschen',
   clear: 'Löschen / Zurücksetzen'

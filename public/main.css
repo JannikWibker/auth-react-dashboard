@@ -807,6 +807,10 @@ div[class^=ToastContainer__toast-container] button[class^=Toast__action] {
   color: var(--accent-color);
 }
 
+table.editable-table {
+  border-spacing: 10px 2px;
+}
+
 th.table-heading {
   font-weight: 600;
   font-size: 12px;

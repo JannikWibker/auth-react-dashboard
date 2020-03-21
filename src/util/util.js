@@ -3,10 +3,12 @@ import { getStorage, getStorageObject, setStorage, setStorageObject } from './st
 const storageObject = getStorageObject()
 
 function getUrlParameter(name) {
-  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-  var results = regex.exec(window.location.search);
-  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  name = name
+    .replace(/[\[]/, '\\[') /* eslint-disable-line no-useless-escape */
+    .replace(/[\]]/, '\\]') /* eslint-disable-line no-useless-escape */
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
+  var results = regex.exec(window.location.search)
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
 }
 
 function getServiceInfo(id, cb) {
