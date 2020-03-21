@@ -29,11 +29,13 @@ class App extends Component {
 
     super(props)
 
-    setStorage('jwt', window.REACT_APP_JWT)
-    setStorage('refreshToken', window.REACT_APP_REFRESH_TOKEN)
+    if(window.ENVIRONMENT === 'dev') { // INFO: change when using .env to set jwt / refreshToken (dev)
+      setStorage('jwt', window.REACT_APP_JWT)
+      setStorage('refreshToken', window.REACT_APP_REFRESH_TOKEN)
+    }
 
     const storageObject = getStorageObject()
-
+    
     console.log(storageObject)
 
     if(storageObject.theme) {

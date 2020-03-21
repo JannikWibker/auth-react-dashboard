@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { inject, observer } from 'mobx-react'
-import { listUsers, modifyUser, deleteUser } from '../util/util.js'
 import { intl, Intl } from './Intl.js'
 
 import EditIcon from './icons/Edit.js'

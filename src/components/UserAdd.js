@@ -26,13 +26,23 @@ class UserAdd extends Component {
   }
 
   addUser = () => {
+    let metadata
+    try {
+      metadata = JSON.parse(this.el.metadata.current.value);
+    } catch (err) {
+      this.props.toast.show({
+        text: intl('error') + ' - ' + intl('malformed_json'),
+        actionText: intl('close'),
+        onActionClick: this.props.hide
+      })
+    }
     const values = {
       username: this.el.username.current.value,
       email: this.el.email.current.value,
       first_name: this.el.first_name.current.value,
       last_name: this.el.last_name.current.value,
       password: this.el.password.current.value,
-      metadata: this.el.metadata.current.value,
+      metadata: metadata,
       account_type: this.state.account_type
     }
     console.log(values)

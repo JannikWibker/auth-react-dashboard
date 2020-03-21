@@ -128,8 +128,8 @@ export default class UserProfile extends Component {
           )}
 
             <div className="user-profile-indicator-wrapper">
-              <div className="info-text">account {intl('modification_date').toLowerCase()}: <span id="account-modification-date-info">{user.modification_date}</span></div>
-              <div className="info-text">account {intl('creation_date').toLowerCase()}: <span id="account-creation-date-info">{user.creation_date}</span></div>
+              <div className="info-text">account {intl('modification_date').toLowerCase()}: <span id="account-modification-date-info">{new Date(user.modification_date).toLocaleString()}</span></div>
+              <div className="info-text">account {intl('creation_date').toLowerCase()}: <span id="account-creation-date-info">{new Date(user.creation_date).toLocaleString()}</span></div>
             </div>
 
           </div>

@@ -1,13 +1,14 @@
 import React from 'react'
+import { onKeyboard } from '../util/aria-helper'
 
 export default ({ onToggleTheme }) => (
   <div className="theme-chooser">
-    <a className="enable-dark-theme-a" href="#" onClick={onToggleTheme}>
+    <span className="enable-dark-theme-a" tabIndex="0" href="#" aria-label="enable dark theme" role="button" onClick={onToggleTheme} onKeyPress={onKeyboard(['enter', 'space'], onToggleTheme)}>
       <svg className="svg-theme enable-dark-theme feather feather-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
-    </a>
-    <a className="enable-light-theme-a" href="#" onClick={onToggleTheme}>
+    </span>
+    <span className="enable-light-theme-a" tabIndex="0" href="#" aria-label="enable light theme" role="button" onClick={onToggleTheme} onKeyPress={onKeyboard(['enter', 'space'], onToggleTheme)}>
       <svg className="svg-theme enable-light-theme feather feather-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="5"></circle>
         <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -18,6 +19,6 @@ export default ({ onToggleTheme }) => (
         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
-    </a>
+    </span>
   </div>
 )
