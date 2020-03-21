@@ -2,6 +2,16 @@ import { getStorage, getStorageObject, setStorage, setStorageObject } from './st
 
 const storageObject = getStorageObject()
 
+const formatDate = (date=new Date()) => {
+  return '' + 
+    (date.getFullYear()).toString().padStart(4, '0') + '-' + 
+    (date.getMonth()+1).toString().padStart(2, '0') + '-' +
+    (date.getDate()).toString().padStart(2, '0') + '@' +
+    (date.getHours()).toString().padStart(2, '0') + ':' +
+    (date.getMinutes()).toString().padStart(2, '0') + ':' +
+    (date.getSeconds()).toString().padStart(2, '0')
+}
+
 function getUrlParameter(name) {
   name = name
     .replace(/[\[]/, '\\[') /* eslint-disable-line no-useless-escape */
@@ -349,6 +359,7 @@ function modifyUserSelf(changes, cb) {
 }
 
 export {
+  formatDate,
   getUrlParameter,
   getServiceInfo,
   login,

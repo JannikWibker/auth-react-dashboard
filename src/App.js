@@ -101,9 +101,14 @@ class App extends Component {
                       <div className="register_token-wrapper">
 
                         <RegisterTokenList />
+                      
+                      </div>
+
+                      <div className="heading-sub-small">Generate Register Token</div>
+                      <div className="add_register_token-wrapper">
 
                         <RegisterTokenAdd />
-                      
+
                       </div>
             
                       <div className="heading-sub-small">List & Modify Users</div>

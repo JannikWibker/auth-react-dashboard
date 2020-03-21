@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { intl, Intl } from './Intl.js'
 
+import { formatDate } from '../util/util.js'
+
 import EditIcon from './icons/Edit.js'
 import XIcon from './icons/X.js'
 import CheckIcon from './icons/Check.js'
@@ -152,8 +154,8 @@ class UserList extends Component {
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-email"      ref={this.el.email}       className="text-input input-small user-list-input" defaultValue={email} /></td>
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-first_name" ref={this.el.first_name}  className="text-input input-small user-list-input" defaultValue={first_name} /></td>
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-last_name"  ref={this.el.last_name}   className="text-input input-small user-list-input" defaultValue={last_name} /></td>
-                <td className="table-data"><span  id="user-list-creation_date"                        className="user-list-field">{creation_date}</span></td>
-                <td className="table-data"><span  id="user-list-modification_date"                    className="user-list-field">{modification_date}</span></td>
+                <td className="table-data"><span  id="user-list-creation_date"                        className="user-list-field">{formatDate(new Date(creation_date))}</span></td>
+                <td className="table-data"><span  id="user-list-modification_date"                    className="user-list-field">{formatDate(new Date(modification_date))}</span></td>
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-metadata"   ref={this.el.metadata}    className="text-input input-small user-list-input" defaultValue={JSON.stringify(metadata)} /></td>
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-password"   ref={this.el.password}    className="text-input input-small user-list-input" defaultValue="" placeholder={intl('new_password')} type="password" /></td>
                 <td className="table-data">
@@ -170,8 +172,8 @@ class UserList extends Component {
                 <td className="table-data"><span className="user-list-field">{email}</span></td>
                 <td className="table-data"><span className="user-list-field">{first_name}</span></td>
                 <td className="table-data"><span className="user-list-field">{last_name}</span></td>
-                <td className="table-data"><span className="user-list-field">{creation_date}</span></td>
-                <td className="table-data"><span className="user-list-field">{modification_date}</span></td>
+                <td className="table-data"><span className="user-list-field">{formatDate(new Date(creation_date))}</span></td>
+                <td className="table-data"><span className="user-list-field">{formatDate(new Date(modification_date))}</span></td>
                 <td className="table-data"><span className="user-list-field">{JSON.stringify(metadata)}</span></td>
                 <td className="table-data"><span className="user-list-field">{'********'}</span></td>
                 <td className="table-data">
