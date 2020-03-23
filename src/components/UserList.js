@@ -172,8 +172,8 @@ class UserList extends Component {
                 <td className="table-data"><span className="user-list-field">{email}</span></td>
                 <td className="table-data"><span className="user-list-field">{first_name}</span></td>
                 <td className="table-data"><span className="user-list-field">{last_name}</span></td>
-                <td className="table-data"><span className="user-list-field">{formatDate(new Date(creation_date))}</span></td>
-                <td className="table-data"><span className="user-list-field">{formatDate(new Date(modification_date))}</span></td>
+                <td className="table-data"><span className="user-list-field">{formatDate(new Date(creation_date)).replace('@', ', ')}</span></td>
+                <td className="table-data"><span className="user-list-field">{formatDate(new Date(modification_date)).replace('@', ', ')}</span></td>
                 <td className="table-data"><span className="user-list-field">{JSON.stringify(metadata)}</span></td>
                 <td className="table-data"><span className="user-list-field">{'********'}</span></td>
                 <td className="table-data">

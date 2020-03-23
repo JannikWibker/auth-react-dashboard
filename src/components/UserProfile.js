@@ -112,14 +112,14 @@ export default class UserProfile extends Component {
             <div className="user-profile-btn-wrapper">
               {this.state.editing ? (
                 <React.Fragment>
-                  <button className="btn btn-normal" onClick={this.cancelEditing}><Intl word="cancel" /></button>
-                  <button className="btn btn-normal btn-green" onClick={this.saveEditing}><Intl word="save" /></button>
-                  <button className="btn btn-normal btn-red" style={{marginLeft: 8}} onClick={this.props.onDelete}><Intl word="delete_account" /></button>
+                  <button className="btn btn-normal" type="button" onClick={this.cancelEditing}><Intl word="cancel" /></button>
+                  <button className="btn btn-normal btn-green" type="button" onClick={this.saveEditing}><Intl word="save" /></button>
+                  <button className="btn btn-normal btn-red" type="button" style={{marginLeft: 8}} onClick={this.props.onDelete}><Intl word="delete_account" /></button>
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <button className="btn btn-normal btn-purple" onClick={this.startEditing}><Intl word="edit" /></button>
-                  <button className="btn btn-normal" onClick={this.props.onLogout}><Intl word="logout" /></button>
+                  <button className="btn btn-normal btn-purple" type="button" onClick={this.startEditing}><Intl word="edit" /></button>
+                  <button className="btn btn-normal" type="button" onClick={this.props.onLogout}><Intl word="logout" /></button>
                 </React.Fragment>
               )}
             </div>

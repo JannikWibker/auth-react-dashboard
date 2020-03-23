@@ -428,10 +428,6 @@ body.theme-dark .theme-chooser .enable-dark-theme-a {
   min-height: calc(100vh - 24px);
 }
 
-.profile-picture {
-  /* margin: 8px; */
-}
-
 .profile-picture-img {
   border-radius: 50%;
   width: 100%;
@@ -720,6 +716,14 @@ body {
   box-shadow: 0 0 0 2px var(--accent-color-opacity);
 }
 
+.text-input.monospace-input {
+  font-family: 'Menlo', 'Meslo', 'Monaco', 'Source Code Pro', 'Consolas', 'Courier', 'Inconsolata', 'Iosevka', 'Lucida Console', monospace;
+}
+
+.text-input.monospace-input.input-small {
+  font-size: 12px;
+}
+
 .btn {
   box-sizing: border-box;
   display: inline-block;
@@ -844,7 +848,8 @@ tr.editing td.table-data.table-input {
 
 td .table-cell-wrapper.copy-adjust {
   max-width: calc(150px - 34px);
-  overflow: overlay;
+  overflow-x: overlay;
+  overflow-y: hidden;
   display: inline-block;
   line-height: 29px;
 }
@@ -856,6 +861,10 @@ td.table-data .copy-wrapper {
   position: relative;
   top: -3px;
   padding-left: 10px;
+}
+
+td.table-data .copy-wrapper:hover > svg, td.table-data .invalidate-wrapper:hover > svg, th.table-heading .refresh-wrapper:hover > svg {
+  stroke: #a36ad8;
 }
 
 td.table-data .invalidate-wrapper {
@@ -928,17 +937,17 @@ td.table-data .delete-wrapper {
   color: var(--text-color);
 }
 
-.user-add input.user-add-input {
+.user-add input.user-add-input, .register_token-add input.user-add-input {
   width: 128px;
   display: inline-block;
 }
 
-.user-add .user-profile-group-horizontal {
+.user-add .user-profile-group-horizontal, .register_token-add .user-profile-group-horizontal {
   width: 320px;
   height: 58px;
 }
 
-.user-add .user-profile-field-block {
+.user-add .user-profile-field-block, .register_token-add .user-profile-field-block {
   height: 54px;
   width: 152px;
   padding-right: 8px;
@@ -966,7 +975,8 @@ td.table-data .delete-wrapper {
   position: absolute;
   white-space: nowrap;
   font-size: 14px;
-  border-radius: 4px; 
+  border-radius: 4px;
+  font-weight: normal;
 }
 
 *[tooltip-top]:hover:before {

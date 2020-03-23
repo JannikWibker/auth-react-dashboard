@@ -8,6 +8,9 @@ import { Intl, intl } from './Intl.js'
 
 import { account_types } from '../stores/UserStore.js'
 
+const METADATA_DEFAULT = '{}'
+const ACCOUNT_TYPE_DEFAULT = account_types[0]
+
 class UserAdd extends Component {
 
   el = {
@@ -20,15 +23,15 @@ class UserAdd extends Component {
   }
 
   state = {
-    account_type: account_types[0]
+    account_type: ACCOUNT_TYPE_DEFAULT
   }
 
   addUser = () => {
     let metadata
     try {
       metadata = JSON.parse(this.el.metadata.current.value);
-    } catch (err) {
-      this.props.toast.show({
+    } catch(err) {
+      return this.props.toast.show({
         text: intl('error') + ' - ' + intl('malformed_json'),
         actionText: intl('close'),
         onActionClick: this.props.hide
@@ -69,13 +72,13 @@ class UserAdd extends Component {
     this.el.first_name.current.value = ''
     this.el.last_name.current.value = ''
     this.el.password.current.value = ''
-    this.el.metadata.current.value = '{}'
+    this.el.metadata.current.value = METADATA_DEFAULT
     this.setState({
-      account_type: account_types[0]
+      account_type: ACCOUNT_TYPE_DEFAULT
     })
   }
 
-  updateAccountType = (account_type = account_types[0]) => {
+  updateAccountType = (account_type = ACCOUNT_TYPE_DEFAULT) => {
     this.setState({ 
       account_type: account_type
     })
@@ -88,11 +91,11 @@ class UserAdd extends Component {
           <div className="user-profile-group-horizontal">
             <div className="user-profile-field-block">
               <label className="user-profile-label" htmlFor="user-add-username"><Intl word="username" /></label><br />
-              <input id="user-add-username" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+              <input id="user-add-username" ref={this.el.username} autoComplete={'off'} className="text-input input-small user-add-input" />
             </div>
             <div className="user-profile-field-block">
               <label className="user-profile-label" htmlFor="user-add-email"><Intl word="email" /></label><br />
-              <input id="user-add-email" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+              <input id="user-add-email" ref={this.el.email} autoComplete={'off'} className="text-input input-small user-add-input" />
             </div>
           </div>
 
@@ -103,7 +106,7 @@ class UserAdd extends Component {
             </div>
             <div className="user-profile-field-block">
               <label className="user-profile-label" htmlFor="user-add-last_name"><Intl word="last_name" /></label><br />
-              <input id="user-add-last_name" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+              <input id="user-add-last_name" ref={this.el.last_name} autoComplete={'off'} className="text-input input-small user-add-input" />
             </div>
           </div>
 
@@ -124,12 +127,12 @@ class UserAdd extends Component {
           <div className="user-profile-group-horizontal">
             <div className="user-profile-field-block">
               <label className="user-profile-label" htmlFor="user-add-metadata"><Intl word="metadata" /></label><br />
-              <input id="user-add-metadata"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.metadata}   placeholder={intl('metadata')} defaultValue={'{}'} />
+              <input id="user-add-metadata" ref={this.el.metadata} autoComplete={'off'} className="text-input input-small user-add-input monospace-input" placeholder={intl('metadata')} defaultValue={METADATA_DEFAULT} />
             </div>
           </div>
           <div className="user-profile-btn-wrapper">
-            <button className="btn btn-normal btn-green" onClick={this.addUser}><Intl word="add" /></button>
-            <button className="btn btn-normal" onClick={this.clearInput}><Intl word="clear" /></button>
+            <button className="btn btn-normal btn-green" type="button" onClick={this.addUser}><Intl word="add" /></button>
+            <button className="btn btn-normal" type="button" onClick={this.clearInput}><Intl word="clear" /></button>
           </div>
         </form>
       </div>
