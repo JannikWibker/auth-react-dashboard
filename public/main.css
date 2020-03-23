@@ -933,8 +933,15 @@ td.table-data .delete-wrapper {
   display: inline-block;
 }
 
-.user-add .user-profile-field-block > * {
-  margin: 4px;
+.user-add .user-profile-group-horizontal {
+  width: 320px;
+  height: 58px;
+}
+
+.user-add .user-profile-field-block {
+  height: 54px;
+  width: 152px;
+  padding-right: 8px;
 }
 
 .user-add .user-profile-field-block > *:first-child {

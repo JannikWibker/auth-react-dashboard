@@ -85,24 +85,47 @@ class UserAdd extends Component {
     return (
       <div className="user-add">
         <form>
-          <div className="user-profile-field-block">
-            <input id="user-add-username"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.username}   placeholder={intl('username')}   />
-            <input id="user-add-email"      autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.email}      placeholder={intl('email')}      />
+          <div className="user-profile-group-horizontal">
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-username"><Intl word="username" /></label><br />
+              <input id="user-add-username" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+            </div>
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-email"><Intl word="email" /></label><br />
+              <input id="user-add-email" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+            </div>
           </div>
-          <div className="user-profile-field-block">
-            <input id="user-add-first_name" autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.first_name} placeholder={intl('first_name')} />
-            <input id="user-add-last_name"  autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.last_name}  placeholder={intl('last_name')}  />
+
+          <div className="user-profile-group-horizontal">
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-first_name"><Intl word="first_name" /></label><br />
+              <input id="user-add-first_name" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+            </div>
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-last_name"><Intl word="last_name" /></label><br />
+              <input id="user-add-last_name" ref={this.el.first_name} autoComplete={'off'} className="text-input input-small user-add-input" />
+            </div>
           </div>
-          <div className="user-profile-field-block">
-            <input id="user-add-password"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.password}   placeholder={intl('password')} type="password" />
-            <Select value={this.state.account_type} style={{ width: 152, height: 32 }} onChange={this.updateAccountType} placeholder={intl('account_type')}>
-              {account_types.map((type, i) => (
-                <Option key={i} value={type}>{type}</Option>
-              ))}
-            </Select>
+
+          <div className="user-profile-group-horizontal">
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-password"><Intl word="password"></Intl></label><br />
+              <input id="user-add-password" ref={this.el.password} autoComplete={'off'} className="text-input input-small user-add-input" type="password" />
+            </div>
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-account_type"><Intl word="account_type"></Intl></label><br />
+              <Select id="user-add-account_type" value={this.state.account_type} style={{ width: 152, height: 32 }} onChange={this.updateAccountType} placeholder={intl('account_type')}>
+                {account_types.map((type, i) => (
+                  <Option key={i} value={type}>{type}</Option>
+                ))}
+              </Select>
+            </div>
           </div>
-          <div className="user-profile-field-block">
-            <input id="user-add-metadata"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.metadata}   placeholder={intl('metadata')} defaultValue={'{}'} />
+          <div className="user-profile-group-horizontal">
+            <div className="user-profile-field-block">
+              <label className="user-profile-label" htmlFor="user-add-metadata"><Intl word="metadata" /></label><br />
+              <input id="user-add-metadata"   autoComplete={'off'} className="text-input input-small user-add-input" ref={this.el.metadata}   placeholder={intl('metadata')} defaultValue={'{}'} />
+            </div>
           </div>
           <div className="user-profile-btn-wrapper">
             <button className="btn btn-normal btn-green" onClick={this.addUser}><Intl word="add" /></button>
