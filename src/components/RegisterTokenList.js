@@ -63,7 +63,7 @@ class RegisterTokenList extends Component {
             <th className="table-heading"><Intl word="creation_date" /></th>
             <th className="table-heading">{capitalize(intl('usages_left'))}</th>
             <th className="table-heading"><Intl word="invalidate" /></th>
-            <th className="table-heading"><div className="refresh-wrapper" tooltip-left={intl('refresh')} onClick={this.updateRegisterTokenState}>
+            <th className="table-heading"><div className="refresh-wrapper icon-hover" tooltip-left={intl('refresh')} onClick={this.updateRegisterTokenState}>
               <RefreshCWIcon width={16} height={16} className={this.props.RegisterTokenStore.loading ? 'loading' : ''} />
             </div></th>
           </tr>
@@ -72,13 +72,13 @@ class RegisterTokenList extends Component {
           {this.props.RegisterTokenStore.register_tokens.map(({ key, token, metadata }) => (
             <tr key={key}>
               <td className="table-data"><div className="table-cell-wrapper">{key}</div></td>
-              <td className="table-data"><div className="table-cell-wrapper copy-adjust">{token}</div><div className="copy-wrapper" tooltip-top={intl('copy')} onClick={() => this.copyToClipboard(token)}><ShareIcon width={16} height={16} /></div></td>
+              <td className="table-data"><div className="table-cell-wrapper copy-adjust">{token}</div><div className="copy-wrapper icon-hover" tooltip-top={intl('copy')} onClick={() => this.copyToClipboard(token)}><ShareIcon width={16} height={16} /></div></td>
               <td className="table-data"><div className="table-cell-wrapper">{metadata.account_type}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">{metadata.formatted_timestamp.replace('@', ', ')}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">{JSON.stringify(metadata.metadata)}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">{metadata.permanent ? intl('infinite') : metadata.usage_count}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">
-                <div className="invalidate-wrapper" tooltip-top={intl('invalidate')} aria-label={intl('invalidate')} onClick={() => this.invalidateRegisterToken(key)}><XIcon width={16} height={16} /></div></div>
+                <div className="invalidate-wrapper icon-hover" tooltip-top={intl('invalidate')} aria-label={intl('invalidate')} onClick={() => this.invalidateRegisterToken(key)}><XIcon width={16} height={16} /></div></div>
               </td>
             </tr>
           ))}

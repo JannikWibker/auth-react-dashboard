@@ -159,9 +159,9 @@ class UserList extends Component {
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-metadata"   ref={this.el.metadata}    className="text-input input-small user-list-input" defaultValue={JSON.stringify(metadata)} /></td>
                 <td className="table-data table-input"><input autoComplete="off" id="user-list-password"   ref={this.el.password}    className="text-input input-small user-list-input" defaultValue="" placeholder={intl('new_password')} type="password" /></td>
                 <td className="table-data">
-                  <div className="save-wrapper"   tooltip-top={intl('save')}    aria-label={intl('save')}   onClick={this.saveEditUser}><CheckIcon width={16} height={16} /></div>
-                  <div className="cancel-wrapper" tooltip-top={intl('cancel')}  aria-label={intl('cancel')} onClick={this.cancelEditUser}><XIcon width={16} height={16} /></div>
-                  <div className="delete-wrapper" tooltip-top={intl('delete')}  aria-label={intl('delete')} onClick={this.deleteUser}><TrashIcon width={16} height={16} /></div>
+                  <div className="save-wrapper icon-hover"   tooltip-top={intl('save')}    aria-label={intl('save')}   onClick={this.saveEditUser}><CheckIcon width={16} height={16} /></div>
+                  <div className="cancel-wrapper icon-hover" tooltip-top={intl('cancel')}  aria-label={intl('cancel')} onClick={this.cancelEditUser}><XIcon width={16} height={16} /></div>
+                  <div className="delete-wrapper icon-hover" tooltip-top={intl('delete')}  aria-label={intl('delete')} onClick={this.deleteUser}><TrashIcon width={16} height={16} /></div>
                 </td>
               </tr>
             ) : (
@@ -177,7 +177,7 @@ class UserList extends Component {
                 <td className="table-data"><span className="user-list-field">{JSON.stringify(metadata)}</span></td>
                 <td className="table-data"><span className="user-list-field">{'********'}</span></td>
                 <td className="table-data">
-                <div className="edit-wrapper" tooltip-top={intl('edit')} aria-label={intl('edit')} onClick={() => this.editUser(username, account_type)}><EditIcon width={16} height={16} /></div>
+                <div className="edit-wrapper icon-hover" tooltip-top={intl('edit')} aria-label={intl('edit')} onClick={() => this.editUser(username, account_type)}><EditIcon width={16} height={16} /></div>
                 </td>
               </tr>
             ))}
