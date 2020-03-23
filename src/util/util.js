@@ -12,6 +12,8 @@ const formatDate = (date=new Date()) => {
     (date.getSeconds()).toString().padStart(2, '0')
 }
 
+const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();
+
 function getUrlParameter(name) {
   name = name
     .replace(/[\[]/, '\\[') /* eslint-disable-line no-useless-escape */
@@ -173,13 +175,13 @@ function redirectToLogin() {
 function generateRegisterToken({ account_type, metadata, permanent, expire_at, usage_count }, cb) {
   window.fetch('/generate-register-token', {
     method: 'POST',
-    body: {
+    body: JSON.stringify({
       account_type: account_type,
       metadata: metadata,
       permanent: permanent,
       expireAt: permanent ? 0 : expire_at,
       usage_count: usage_count
-    },
+    }),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -360,6 +362,7 @@ function modifyUserSelf(changes, cb) {
 
 export {
   formatDate,
+  capitalize,
   getUrlParameter,
   getServiceInfo,
   login,

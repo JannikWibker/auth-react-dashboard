@@ -724,6 +724,11 @@ body {
   font-size: 12px;
 }
 
+.text-input:disabled {
+  text-decoration: line-through;
+  color: var(--grey-1-color);
+}
+
 .btn {
   box-sizing: border-box;
   display: inline-block;
@@ -961,7 +966,7 @@ td.table-data .delete-wrapper {
   margin-right: 0px;
 }
 
-.user-add .user-profile-field-block #user-add-metadata {
+.user-add .user-profile-field-block #user-add-metadata, .register_token-add .user-profile-field-block #register_token-add-metadata {
   width: 288px;
 }
 

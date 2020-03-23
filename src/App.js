@@ -4,6 +4,7 @@ import { ToastProvider } from 'react-awesome-toasts'
 
 import { Provider } from 'mobx-react'
 import UserStore from './stores/UserStore'
+import RegisterTokenStore from './stores/RegisterTokenStore'
 
 import UserProfileWrapper from './components/UserProfileWrapper.js'
 import ThemeChooser from './components/ThemeChooser.js'
@@ -82,7 +83,7 @@ class App extends Component {
 
         <div className="container">
 
-          <Provider UserStore={UserStore}>
+          <Provider UserStore={UserStore} RegisterTokenStore={RegisterTokenStore}>
             <ToastProvider timeout={2000}>
 
               {this.state.logged_in ? (
