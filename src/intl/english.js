@@ -37,7 +37,16 @@ const english = {
   seconds: 'seconds',
   add: 'Add',
   delete: 'Delete',
-  clear: 'Clear'
+  clear: 'Clear',
+  your_devices: 'Your Devices',
+  revoke_current_device: 'Do you really want to log out this device?',
+  logout_everywhere_notice: 'Do you really want to log out every devices? If yes, also this device?',
+  logout_everywhere_inclusive: 'Yes, also this device',
+  logout_everywhere_exclusive: 'No, not this device',
+  logout_everywhere_count: 'Logged out $$ devices',
+  logout_everywhere: 'Log out everywhere',
+  logged_out_devices: 'Logged out devices',
+  this_device: 'this device',
 }
 
 export default english

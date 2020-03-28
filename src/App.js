@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 
+import { Intl } from './components/Intl.js'
+
 import { ToastProvider } from 'react-awesome-toasts'
 
 import { Provider } from 'mobx-react'
 import UserStore from './stores/UserStore'
 import RegisterTokenStore from './stores/RegisterTokenStore'
+import DeviceStore from './stores/DeviceStore'
 
 import UserProfileWrapper from './components/UserProfileWrapper.js'
+import UserDevices from './components/UserDevices.js'
 import ThemeChooser from './components/ThemeChooser.js'
 import Footer from './components/Footer.js'
 import RegisterTokenList from './components/RegisterTokenList.js'
@@ -16,8 +20,7 @@ import UserAdd from './components/UserAdd.js'
 
 /* eslint-disable-next-line */
 import { getStorage, getStorageObject, setStorage, setStorageObject } from './util/storage.js'
-/* eslint-disable-next-line */
-import { getUrlParameter, getServiceInfo, login, testIfJwtWorks, testIfRefreshTokenWorks, updateSavedUserData, updateSavedUserDataIfNeeded, toggleTheme, redirectToLogin, generateRegisterToken, listRegisterTokens, invalidateRegisterToken, listUsers, modifyUser, deleteUser, modifyUserSelf } from './util/util.js'
+import { testIfJwtWorks, testIfRefreshTokenWorks, toggleTheme, redirectToLogin } from './util/util.js'
 
 class App extends Component {
 
@@ -83,7 +86,7 @@ class App extends Component {
 
         <div className="container">
 
-          <Provider UserStore={UserStore} RegisterTokenStore={RegisterTokenStore}>
+          <Provider UserStore={UserStore} RegisterTokenStore={RegisterTokenStore} DeviceStore={DeviceStore}>
             <ToastProvider timeout={2000}>
 
               {this.state.logged_in ? (
@@ -91,35 +94,42 @@ class App extends Component {
 
                   <div className="wrapper">
 
-                    <div className="heading-sub">Your Information</div>
+                    <div className="heading-sub">Your Information</div> {/* TODO: intl */}
 
                     <UserProfileWrapper />
+
+                    <div className="heading-sub-small"><Intl word="your_devices" /></div>
+                    <div className="devices-wrapper">
+
+                      <UserDevices />
+
+                    </div>
 
                     {this.state.userObject.account_type === 'admin' ? (
                       <div className="admin-panel-wrapper">
 
-                      <div className="heading-sub-small">Register Tokens</div>
+                      <div className="heading-sub-small">Register Tokens</div> {/* TODO: intl */}
                       <div className="register_token-wrapper">
 
                         <RegisterTokenList />
                       
                       </div>
 
-                      <div className="heading-sub-small">Generate Register Token</div>
+                      <div className="heading-sub-small">Generate Register Token</div> {/* TODO: intl */}
                       <div className="add_register_token-wrapper">
 
                         <RegisterTokenAdd />
 
                       </div>
             
-                      <div className="heading-sub-small">List & Modify Users</div>
+                      <div className="heading-sub-small">List & Modify Users</div> {/* TODO: intl */}
                       <div className="list_user-wrapper">
 
                         <UserList />
             
                       </div>
 
-                      <div className="heading-sub-small">Add User</div>
+                      <div className="heading-sub-small">Add User</div> {/* TODO: intl */}
                       <div className="add_user-wrapper">
 
                         <UserAdd />

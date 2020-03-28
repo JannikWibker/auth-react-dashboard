@@ -37,7 +37,16 @@ const german = {
   seconds: 'Sekunden',
   add: 'Hinzufügen',
   delete: 'Löschen',
-  clear: 'Löschen / Zurücksetzen'
+  clear: 'Löschen / Zurücksetzen',
+  your_devices: 'Your Devices',
+  revoke_current_device: 'Wollen Sie wirklich dieses Gerät ausloggen?',
+  logout_everywhere_notice: 'Wollen Sie wirklich alle Geräte ausloggen? Wenn ja, auch dieses Gerät?',
+  logout_everywhere_inclusive: 'Ja, dieses auch',
+  logout_everywhere_exclusive: 'Nein, dieses nicht',
+  logout_everywhere_count: '$$ Geräte ausgeloggt',
+  logout_everywhere: 'Überall ausloggen',
+  logged_out_devices: 'Ausgeloggte Geräte',
+  this_device: 'dieses Gerät',
 }
 
 export default german

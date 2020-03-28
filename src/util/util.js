@@ -245,6 +245,14 @@ function invalidateRegisterToken(id, cb) {
     })
 }
 
+function getAllUserDevices() {
+  // get /devices/
+}
+
+function revokeUserDevice(device_id) {
+  // patch /devices/revoke { device_id }
+}
+
 function listUsers(cb) {
   window.fetch('/users/list', {
     method: 'GET', // is not a GET request YET, will change soon
@@ -376,6 +384,8 @@ export {
   generateRegisterToken,
   listRegisterTokens,
   invalidateRegisterToken,
+  getAllUserDevices,
+  revokeUserDevice,
   listUsers,
   modifyUser,
   addUser,
