@@ -246,11 +246,28 @@ function invalidateRegisterToken(id, cb) {
 }
 
 function getAllUserDevices() {
-  // get /devices/
+  return window.fetch('/devices', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + getStorage('jwt')
+    }
+  })
+    .then(function(res) { return res.json() })
 }
 
 function revokeUserDevice(device_id) {
-  // patch /devices/revoke { device_id }
+  return window.fetch('/device', {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + getStorage('jwt')
+    },
+    body: JSON.stringify({
+      device_id: device_id
+    })
+  })
+    .then(function(res) { return res.json() })
 }
 
 function listUsers(cb) {
@@ -332,7 +349,6 @@ function deleteUser(id, cb) {
 }
 
 function modifyUserSelf(changes, cb) {
-
   window.fetch('/users/modify-self', {
     method: 'POST',
     body: JSON.stringify(changes),

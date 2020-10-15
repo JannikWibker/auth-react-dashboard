@@ -47,6 +47,18 @@ const english = {
   logout_everywhere: 'Log out everywhere',
   logged_out_devices: 'Logged out devices',
   this_device: 'this device',
+  expand: 'Expand',
+  minimize: 'Minimize',
+  revoke: 'Revoke',
+  internal_ip_notice: 'is not a globally routable ip address, therefore no location data is available',
+  device_id: 'Device ID',
+  region: 'Region',
+  city: 'City',
+  approximation: 'approximation',
+  isp: 'ISP',
+  this_device: 'this device',
+  last_used: 'last used',
+  date_added: 'added',
 }
 
 export default english

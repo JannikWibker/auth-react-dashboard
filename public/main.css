@@ -974,6 +974,277 @@ td.table-data .delete-wrapper {
   width: 288px;
 }
 
+.heading-sub-action-right {
+  float: right;
+  padding: 0;
+  margin-right: 12px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: Avenir,AvenirLTStd;
+  color: var(--grey-1-color);
+  background-color: var(--backgrond-color);
+  text-decoration: none;
+}
+
+.heading-sub-action-right:focus, .heading-sub-action-right:hover {
+  text-decoration: underline;
+  color: var(--accent-color-light);
+  outline: none;
+  cursor: pointer;
+}
+
+.device {
+  margin: 6px;
+  padding: 6px;
+  border: 2px solid var(--grey-5-color);
+  background-color: var(--grey-4-color);
+  border-radius: 6px;
+  height: 72px;
+  transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.device.expanded {
+  height: 196px;
+}
+
+.device.expanded.internal {
+  height: 126px;
+}
+
+.device .device_wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 4px;
+}
+
+.device .device_formfactor_icon {
+  padding-right: 16px;
+}
+
+.device .device_formfactor_icon>img {
+  width: 60px;
+  height: 60px;
+}
+
+.device .device_platform {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.device .device_this_device_tag {
+  display: inline-block;
+  padding: 2px 6px 2px 4px;
+  margin-left: 8px;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.device .device_dates {
+  display: inline-block;
+}
+
+.device .device_last_used {
+  display: inline-block;
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.device .device_creation_date {
+  display: inline-block;
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.device.expanded .device_last_used, .device.expanded .device_creation_date {
+  /* display: block; */
+}
+
+.device .device_last_used>span {
+  font-weight: bold;
+}
+
+.device .device_ip {
+  padding-top: 2px;
+  font-size: 12px;
+  color: var(--grey-3-color);
+}
+
+.device.expanded .device_ip {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--grey-3-color);
+}
+
+.device.expanded .device_ip_internal_notice {
+  font-size: 14px;
+}
+
+.device .device_ip_information {
+  margin-top: 4px;
+}
+
+.device .device_ip_information_table>tbody>tr>td {
+  font-size: 14px;
+}
+
+.device .device_ip_information_table>tbody>tr>td:first-child {
+  font-weight: 600;
+  color: var(--grey-3-color);
+}
+
+.device .device_ip_information_table>tbody>tr>td>a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.device .device_actions {
+  right: 2px;
+  height: 64px;
+  color: var(--text-color);
+  transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.device.expanded .device_actions {
+  height: 166px;
+}
+
+.device.expanded.internal .device_actions {
+  height: 118px;
+}
+
+.device .device_revoke {
+  position: absolute;
+  right: 2px;
+  height: 24px;
+  top: 0px;
+}
+
+.device .device_expand {
+  position: absolute;
+  right: 2px;
+  height: 24px;
+  bottom: 0px;
+}
+
+.device .device_revoke:hover > svg, .device .device_expand:hover > svg {
+  color: var(--accent-color-light);
+}
+
+
+@media (max-width: 850px) {
+
+  .device .device_formfactor_icon {
+    padding-right: 12px;
+  }
+
+  .device .device_formfactor_icon>img {
+    width: 40px;
+    height: 40px;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .device.expanded {
+    height: 176px;
+  }
+
+  .device .device_platform {
+    font-size: 16px;
+  }
+
+  .device .device_browser {
+    font-size: 12px;
+  }
+
+  .device .device_last_used, .device .device_creation_date {
+    font-size: 10px;
+  }
+
+  .device .device_ip {
+    font-size: 10px;
+  }
+
+  .device .device_ip_information_table>tbody>tr>td {
+    font-size: 12px;
+  }
+
+  .device.expanded .device_ip {
+    font-size: 12px;
+  }
+
+  .device.expanded .device_ip_internal_notice {
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 750px) {
+
+  .device {
+    height: 64px;
+  }
+
+  .device .device_actions {
+    height: 64px;
+  }
+
+  .device.expanded {
+    height: 162px;
+  }
+
+  .device.expanded .device_actions {
+    height: 162px;
+  }
+
+  .device .device_ip_information_table>tbody>tr>td {
+    font-size: 10px;
+  }
+
+  .device.expanded .device_ip {
+    font-size: 10px;
+  }
+
+  .device.expanded .device_ip_internal_notice {
+    font-size: 10px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .device {
+    height: 64px;
+  }
+
+  .device .device_actions {
+    height: 64px;
+  }
+
+  .device.expanded {
+    height: 160px;
+  }
+
+  .device.expanded .device_actions {
+    height: 156px;
+  }
+
+  .device .device_formfactor_icon {
+    padding-right: 8px;
+  }
+
+  .device .device_formfactor_icon>img {
+    width: 28px;
+    height: 28px;
+  }
+
+}
+
 *[tooltip-top], *[tooltip-left], *[tooltip-bottom], *[tooltip-right] {
   position: relative;
 }

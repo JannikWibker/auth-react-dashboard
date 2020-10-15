@@ -98,9 +98,8 @@ class App extends Component {
 
                     <UserProfileWrapper />
 
-                    <div className="heading-sub-small"><Intl word="your_devices" /></div>
                     <div className="devices-wrapper">
-
+                      
                       <UserDevices />
 
                     </div>

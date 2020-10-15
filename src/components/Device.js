@@ -7,6 +7,7 @@ import ChevronDown from './icons/chevron-down.js'
 import ChevronUp from './icons/chevron-up.js'
 
 import { formatDate } from '../util/util.js'
+import { getStorage } from '../util/storage.js'
 
 const RenderIpInformation = ({ ip, ip_information, uuid }) => {
   if(ip_information.is_internal) {
@@ -28,7 +29,7 @@ const RenderIpInformation = ({ ip, ip_information, uuid }) => {
       <div className="device_ip_information">
         <table className="device_ip_information_table">
           <tbody>
-            <tr><td>{ip}</td></tr>
+            <tr><td>{ip.length > 20 ? ip.substring(0, 20) + '…' : ip}</td></tr>
             <tr><td><Intl word="region" /></td><td>{ip_information.continent}, {ip_information.country}, {ip_information.region}</td></tr>
             <tr><td><Intl word="city" /></td><td>{ip_information.city} ({ip_information.zip})</td></tr>
             <tr><td>Lat./Long.</td><td>
@@ -74,9 +75,9 @@ class Device extends Component {
 
     let icon_src
 
-    switch(this.props.device.user_agent.formfactor) {
+    switch(this.props.device.parsed_user_agent.formfactor) {
       case 'Desktop': // handle this somehow (there is no UIStore in this project)
-        icon_src = this.props.UIStore.themeBase === 'dark' ? '/icons/desktop-dark-mode.png' : '/icons/desktop-light-mode.png'
+        icon_src = getStorage('theme') === 'dark' ? '/icons/desktop-dark-mode.png' : '/icons/desktop-light-mode.png'
         break;
       case 'Mobile':
         icon_src = '/icons/mobile.png'
@@ -92,27 +93,27 @@ class Device extends Component {
 
   render() {
 
-    const { device_id: uuid, ip, user_agent, creation_date, last_used, ip_information, is_revoked } = this.props.device
+    const { device_id: uuid, ip, parsed_user_agent, creation_date, last_used, ip_information, is_revoked } = this.props.device
 
     return (
       <div className={"device" + (this.state.expanded ? ' expanded' : '') + (ip_information.is_internal ? ' internal' : '')}>
       <div className="device_wrapper">
         <div className="device_formfactor_icon">
-          <img src={this.state.icon_src} alt={user_agent.formfactor}/>
+          <img src={this.state.icon_src} alt={parsed_user_agent.formfactor}/>
         </div>
         <div className="device_information_wrapper">
 
           <div className="device_platform">
-            {user_agent.platform}
+            {parsed_user_agent.platform}
             {uuid === this.props.current_device_uuid ? (<div className="device_this_device_tag"><Intl word="this_device" /></div>) : null}
           </div>
 
           <div className="device_information_row">
-            <span className="device_browser">{user_agent.browser}</span>
+            <span className="device_browser">{parsed_user_agent.browser}</span>
 
             <div className="device_dates">
-              <span className="device_last_used"><Intl word="last_used" />: <span>{formatDate(last_used)}</span></span>
-              <span className="device_creation_date"><Intl word="date_added" />: <span>{formatDate(creation_date)}</span></span>
+              <span className="device_last_used"><Intl word="last_used" />: <span>{formatDate(new Date(last_used))}</span></span>
+              <span className="device_creation_date"><Intl word="date_added" />: <span>{formatDate(new Date(creation_date))}</span></span>
             </div>
 
             {this.state.expanded ? (
