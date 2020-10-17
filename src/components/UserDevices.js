@@ -2,17 +2,45 @@ import React, { Component } from 'react'
 
 import { Intl, intl } from './Intl.js'
 
+import Modal from 'react-modal'
+
 import { inject, observer } from 'mobx-react'
 import { withToast } from 'react-awesome-toasts'
 
 import Device from './Device.js'
+
+const ConfirmModal = ({ open, close, component }) => (
+  <Modal
+    isOpen={open}
+    contentLabel="Confirm Modal"
+    className="confirm-modal"
+    overlayClassName="confirm-modal-overlay"
+    onRequestClose={close}
+    shouldCloseOnOverlayClick={true}>
+    {typeof component === 'function' ? component(close) : component }
+  </Modal>
+)
+
+const setModal = (scope, { confirm_modal_open, confirm_modal_component }) => scope.setState(Object.assign({
+  confirm_modal_open: scope.confirm_modal_open,
+  confirm_modal_component: scope.confirm_modal_component
+}, {
+  confirm_modal_open,
+  confirm_modal_component
+}))
 
 class UserDevices extends Component {
 
   constructor(props) {
     super(props)
     props.DeviceStore.loadDevices()
+    this.state = {
+      confirm_modal_open: false,
+      confirm_modal_component: null
+    }
   }
+
+  setModal = setModal.bind(this, this)
 
   onRevokeCurrentDeviceConfirmation(close) {
     this.props.DeviceStore.revokeDevice(this.props.DeviceStore.current_device)
@@ -20,7 +48,20 @@ class UserDevices extends Component {
 
   onRevokeDevice(device_id) {
     if(this.props.DeviceStore.current_device === device_id) {
-      // TODO: ask user for confirmation, then call this.onRevokeCurrentDeviceConfirmation
+      this.setModal(this, {
+        confirm_modal_open: true,
+        confirm_modal_component: (close) => (
+          <div className="confirm-modal-wrapper">
+            <div className="confirm-modal-text">
+              <Intl word="revoke_current_device" />
+            </div>
+            <div className="confirm-modal-btn-wrapper">
+              <button className="btn btn-normal" onClick={close}><Intl word="cancel" /></button>
+              <button className="btn btn-normal btn-red" onClick={this.onRevokeCurrentDeviceConfirmation.bind(this, close)}><Intl word="logout" /></button>
+            </div>
+          </div>
+        )
+      })
     } else {
       this.props.DeviceStore.revokeDevice(device_id)
     }
@@ -38,7 +79,7 @@ class UserDevices extends Component {
 
         devices.forEach(device => this.props.DeviceStore.revokeDevice(device.device_id))
       })
-      // .then(close) // TODO: close belongs to the modal system, cannot call this without a modal
+      .then(close)
       .then(() => this.props.toast.show({
         text: intl('logout_everywhere_count').replace('$$', device_count),
         actionText: intl('close'),
@@ -58,7 +99,7 @@ class UserDevices extends Component {
 
       devices.forEach(device => this.props.DeviceStore.revokeDevice(device.device_id))
     })
-    // .then(close) // TODO: close belongs to the modal system, cannot call this without a modal
+    .then(close)
     .then(() => this.props.toast.show({
       text: intl('logout_everywhere_count').replace('$$', device_count),
       actionText: intl('close'),
@@ -68,7 +109,22 @@ class UserDevices extends Component {
   }
 
   onRevokeAllDevices = (e) => {
-    // TODO: ask user wether to also log out the current device or leave it logged in, depending on that call this.onRevokeAllDevices(including/excluding)Current(close)
+    this.setModal({
+      confirm_modal_open: true,
+      confirm_modal_component: (close) => (
+        <div className="confirm-modal-wrapper">
+          <div className="confirm-modal-text">
+            <Intl word="logout_everywhere_notice" />
+          </div>
+          <div className="confirm-modal-btn-wrapper">
+            <button className="btn btn-normal" onClick={close}><Intl word="cancel" /></button>
+            <button className="btn btn-normal btn-red" onClick={this.onRevokeAllDevicesExcludingCurrent.bind(this, close)}><Intl word="logout_everywhere_exclusive" /></button>
+            <button className="btn btn-normal btn-red" onClick={this.onRevokeAllDevicesIncludingCurrent.bind(this, close)}><Intl word="logout_everywhere_inclusive" /></button>
+          </div>
+        </div>
+      )
+    })
+
   }
 
   render() {
@@ -111,6 +167,8 @@ class UserDevices extends Component {
             />
           ))}
         </div>
+
+        <ConfirmModal open={this.state.confirm_modal_open} close={() => this.setState({ confirm_modal_open: false })} component={this.state.confirm_modal_component} />
 
       </div>
     )

@@ -994,6 +994,47 @@ td.table-data .delete-wrapper {
   cursor: pointer;
 }
 
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(15, 15, 15, 0.6);
+}
+
+.confirm-modal {
+  max-width: calc(100vw - 100px);
+  max-height: calc(100vh - 100px);
+  width: 368px;
+  height: 112px;
+  background: var(--background-color);
+  overflow: auto;
+  outline: none;
+  padding: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.confirm-modal-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.confirm-modal-btn-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.confirm-modal-btn-wrapper .btn {
+  margin: 0px 2px;
+}
+
 .device {
   margin: 6px;
   padding: 6px;

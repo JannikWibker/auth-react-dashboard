@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Intl } from './components/Intl.js'
 
 import { ToastProvider } from 'react-awesome-toasts'
+import Modal from 'react-modal'
 
 import { Provider } from 'mobx-react'
 import UserStore from './stores/UserStore'
@@ -21,6 +22,8 @@ import UserAdd from './components/UserAdd.js'
 /* eslint-disable-next-line */
 import { getStorage, getStorageObject, setStorage, setStorageObject } from './util/storage.js'
 import { testIfJwtWorks, testIfRefreshTokenWorks, toggleTheme, redirectToLogin } from './util/util.js'
+
+Modal.setAppElement('#root')
 
 class App extends Component {
 
@@ -94,7 +97,7 @@ class App extends Component {
 
                   <div className="wrapper">
 
-                    <div className="heading-sub">Your Information</div> {/* TODO: intl */}
+                    <div className="heading-sub"><Intl word="your_information" /></div>
 
                     <UserProfileWrapper />
 
@@ -107,28 +110,30 @@ class App extends Component {
                     {this.state.userObject.account_type === 'admin' ? (
                       <div className="admin-panel-wrapper">
 
-                      <div className="heading-sub-small">Register Tokens</div> {/* TODO: intl */}
+                      <div className="heading-sub"><Intl word="admin_interface" /></div>
+
+                      <div className="heading-sub-small"><Intl word="register_tokens" /></div>
                       <div className="register_token-wrapper">
 
                         <RegisterTokenList />
                       
                       </div>
 
-                      <div className="heading-sub-small">Generate Register Token</div> {/* TODO: intl */}
+                      <div className="heading-sub-small"><Intl word="generate_register_tokens" /></div>
                       <div className="add_register_token-wrapper">
 
                         <RegisterTokenAdd />
 
                       </div>
             
-                      <div className="heading-sub-small">List & Modify Users</div> {/* TODO: intl */}
+                      <div className="heading-sub-small"><Intl word="list_modify_users" /></div>
                       <div className="list_user-wrapper">
 
                         <UserList />
             
                       </div>
 
-                      <div className="heading-sub-small">Add User</div> {/* TODO: intl */}
+                      <div className="heading-sub-small"><Intl word="add_user" /></div>
                       <div className="add_user-wrapper">
 
                         <UserAdd />
