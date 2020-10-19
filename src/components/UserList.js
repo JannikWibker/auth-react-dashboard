@@ -67,7 +67,7 @@ class UserList extends Component {
       }
     }
 
-    this.props.UserStore.modifyUser()
+    this.props.UserStore.modifyUser(changes, user.username)
       .then(json => {
         console.log(json)
         this.setState({ editing_user: null })

@@ -74,8 +74,8 @@ class RegisterTokenList extends Component {
               <td className="table-data"><div className="table-cell-wrapper">{key}</div></td>
               <td className="table-data"><div className="table-cell-wrapper copy-adjust">{token}</div><div className="copy-wrapper icon-hover" tooltip-top={intl('copy')} onClick={() => this.copyToClipboard(token)}><ShareIcon width={16} height={16} /></div></td>
               <td className="table-data"><div className="table-cell-wrapper">{metadata.account_type}</div></td>
-              <td className="table-data"><div className="table-cell-wrapper">{metadata.formatted_timestamp.replace('@', ', ')}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">{JSON.stringify(metadata.metadata)}</div></td>
+              <td className="table-data"><div className="table-cell-wrapper">{metadata.formatted_timestamp.replace('@', ', ')}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">{metadata.permanent ? intl('infinite') : metadata.usage_count}</div></td>
               <td className="table-data"><div className="table-cell-wrapper">
                 <div className="invalidate-wrapper icon-hover" tooltip-top={intl('invalidate')} aria-label={intl('invalidate')} onClick={() => this.invalidateRegisterToken(key)}><XIcon width={16} height={16} /></div></div>
