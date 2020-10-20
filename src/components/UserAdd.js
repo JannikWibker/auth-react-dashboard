@@ -44,7 +44,8 @@ class UserAdd extends Component {
       last_name: this.el.last_name.current.value,
       password: this.el.password.current.value,
       metadata: metadata,
-      account_type: this.state.account_type
+      account_type: this.state.account_type,
+      is_passwordless: !this.el.password.current.value
     }
     console.log(values)
 

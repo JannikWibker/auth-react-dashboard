@@ -343,7 +343,7 @@ body.theme-dark .theme-chooser .enable-dark-theme-a {
   margin: 4px 6px;
 }
 
-.login-incorrect-credentials.hidden, .login-incorrect-repeat.hidden, .register-incorrect-repeat.hidden, .login-passwordless-account-notice.hidden {
+.login-incorrect-credentials.hidden, .login-incorrect-repeat.hidden, .register-incorrect-repeat.hidden, .login-passwordless-account-notice.hidden, .login-passwordless-account-error-notice.hidden {
   display: none;
 }
 
@@ -352,6 +352,13 @@ body.theme-dark .theme-chooser .enable-dark-theme-a {
   margin: -4px 4px 8px 0px;
   padding-left: 10px;
   border-left: 4px solid #a36ad8;
+}
+
+.login-passwordless-account-error-notice {
+  font-size: 14px;
+  margin: -4px 4px 8px 0px;
+  padding-left: 10px;
+  border-left: 4px solid #ff0055;
 }
 
 .login-container, .register-container {
