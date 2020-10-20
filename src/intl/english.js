@@ -66,7 +66,8 @@ const english = {
   date_added: 'added',
   server_information: 'Server Information',
   uptime: 'uptime',
-  version: 'version',
+  server_version: 'server version',
+  client_version: 'client version',
   user_count: 'users'
 }
 
