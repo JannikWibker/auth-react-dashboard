@@ -384,6 +384,15 @@ function modifyUserSelf(changes, cb) {
     })
 }
 
+const getServerVersion = () =>
+  window.fetch('/current-version')
+    .then(res => res.text())
+
+const getServerUptime = () => 
+  window.fetch('/uptime')
+    .then(res => res.text())
+    .then(uptime => new Date(parseInt(uptime, 10)))
+
 export {
   formatDate,
   capitalize,
@@ -406,5 +415,7 @@ export {
   modifyUser,
   addUser,
   deleteUser,
-  modifyUserSelf
+  modifyUserSelf,
+  getServerVersion,
+  getServerUptime,
 }

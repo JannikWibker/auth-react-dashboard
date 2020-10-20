@@ -34,7 +34,7 @@ class UserAdd extends Component {
       return this.props.toast.show({
         text: intl('error') + ' - ' + intl('malformed_json'),
         actionText: intl('close'),
-        onActionClick: this.props.hide
+        onActionClick: this.props.toast.hide
       })
     }
     const values = {
@@ -53,7 +53,7 @@ class UserAdd extends Component {
         this.props.toast.show({
           text: intl('successfully_added'),
           actionText: intl('close'),
-          onActionClick: this.props.hide
+          onActionClick: this.props.toast.hide
         })
       })
       .catch(err => {
@@ -61,7 +61,7 @@ class UserAdd extends Component {
         this.props.toasts.show({
           text: intl('something_went_wrong') + ' (add user)',
           actionText: intl('close'),
-          onActionClick: this.props.hide
+          onActionClick: this.props.toast.hide
         })
       })
   }

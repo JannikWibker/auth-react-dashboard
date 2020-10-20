@@ -18,6 +18,7 @@ import RegisterTokenList from './components/RegisterTokenList.js'
 import RegisterTokenAdd from './components/RegisterTokenAdd.js'
 import UserList from './components/UserList.js'
 import UserAdd from './components/UserAdd.js'
+import ServerInformation from './components/ServerInformation.js'
 
 /* eslint-disable-next-line */
 import { getStorage, getStorageObject, setStorage, setStorageObject } from './util/storage.js'
@@ -139,6 +140,10 @@ class App extends Component {
                         <UserAdd />
             
                       </div>
+
+                      <div className="heading-sub-small"><Intl word="server_information" /></div>
+
+                      <ServerInformation />
             
                     </div>
                     ) : null}

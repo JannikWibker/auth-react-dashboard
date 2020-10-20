@@ -64,6 +64,10 @@ const english = {
   isp: 'ISP',
   last_used: 'last used',
   date_added: 'added',
+  server_information: 'Server Information',
+  uptime: 'uptime',
+  version: 'version',
+  user_count: 'users'
 }
 
 export default english

@@ -34,7 +34,7 @@ class RegisterTokenAdd extends Component {
       return this.props.toast.show({
         text: intl('error') + ' - ' + intl('malformed_json'),
         actionText: intl('close'),
-        onActionClick: this.props.hide
+        onActionClick: this.props.toast.hide
       })
     }
     const values = {

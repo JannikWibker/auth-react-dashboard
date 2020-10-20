@@ -342,7 +342,7 @@
           .then(res => res.json())
           .then(json => {
             if(json.status === 'failure') {
-              // TODO: display some kind of error
+              // TODO: display some kind of error: "password couldn't be set"
               console.log(json.message)
             } else {
               if(json.device_id) setStorage('device_id', json.device_id)
@@ -350,7 +350,7 @@
             }
           })
           .catch(err => {
-            // TODO: display some kind of error
+            // TODO: display some kind of error: "password couldn't be set"
             console.log(err)
           })
         }
